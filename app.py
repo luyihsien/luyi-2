@@ -16,10 +16,10 @@ config = configparser.ConfigParser()
 config.read("config.ini")
 # Channel Access Token
 #line_bot_api = LineBotApi('eiIQIeDuC6GyB/gn1gBHrri96ZdVS7fwTxqaw0eu7NlCtqj7fxxjNjj27wj3LKS0MEoXDKcqMlqlXRJPRu+6KUroP+F5ZUtXEqmsHiZbTHL9QqusZOF8s5Sot61+rj261DO0Ujmi2RJTfGLMFvxIbwdB04t89/1O/w1cDnyilFU=')
-line_bot_api = LineBotApi('Channel_Access_Token')
+line_bot_api = LineBotApi(config['line_bot']['Channel_Access_Token'])
 # Channel Secret
 #handler = WebhookHandler('3f852273ba31afd703e4116a0a0a37c7')
-handler = WebhookHandler('Channel_Secret')
+handler = WebhookHandler(config['line_bot']['Channel_Secret'])
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
 def callback():
