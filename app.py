@@ -13,7 +13,7 @@ from linebot.models import (
 
 app = Flask(__name__)
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read("C:\\Users\\luyih\\Desktop\\linebot1\\config.ini")
 # Channel Access Token
 #line_bot_api = LineBotApi('eiIQIeDuC6GyB/gn1gBHrri96ZdVS7fwTxqaw0eu7NlCtqj7fxxjNjj27wj3LKS0MEoXDKcqMlqlXRJPRu+6KUroP+F5ZUtXEqmsHiZbTHL9QqusZOF8s5Sot61+rj261DO0Ujmi2RJTfGLMFvxIbwdB04t89/1O/w1cDnyilFU=')
 line_bot_api = LineBotApi(config['line_bot']['Channel_Access_Token'])
