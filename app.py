@@ -67,7 +67,7 @@ def handle_message(event):
                     text='開始學習'
                 ),
                 URITemplateAction(
-                    label='關於我-fb粉專連結(不會看到我的個資)',
+                    label='關於我fb粉專',
                     uri='https://www.facebook.com/shareteacher/'
                 ),
                 URITemplateAction(
