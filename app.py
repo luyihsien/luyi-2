@@ -55,7 +55,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="今天的英文影片精選"))
     if msg=="我要學數學":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
-    buttons_template = TemplateSendMessage(
+    else:
+        buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
         template=ButtonsTemplate(
             title='選擇服務',
