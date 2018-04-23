@@ -58,45 +58,8 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
     if msg=="9487":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="94狂"))
-
-    '''if event.message.text == "擲骰子遊戲":
-        buttons_template = TemplateSendMessage(
-            alt_text='擲骰子比大小 template',
-            template=ButtonsTemplate(
-                title='比大小遊戲',
-                text='任選數字1-6',
-                thumbnail_image_url='https://i.imgur.com/lSSWPnX.jpg',
-                actions=[
-                    MessageTemplateAction(
-                        label='1',
-                        text='1'
-                    ),
-                    MessageTemplateAction(
-                        label='2',
-                        text='2'
-                    ),
-                    MessageTemplateAction(
-                        label='3',
-                        text='3'
-                    ),
-                    MessageTemplateAction(
-                        label='4',
-                        text='4'
-                    ),
-                    MessageTemplateAction(
-                        label='5',
-                        text='5'
-                    ), MessageTemplateAction(
-                        label='6',
-                        text='6'
-                    )
-                ]
-            )
-        )
-'''
-
     else:
-    buttons_template = TemplateSendMessage(
+        buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
         template=ButtonsTemplate(
             title='選擇服務',
