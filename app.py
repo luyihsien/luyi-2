@@ -51,7 +51,6 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     print(msg)
-    msg = msg.encode('utf-8')
     if msg=="我要學國文":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="今天的每日一字"))
     if msg=="我要學英文":
