@@ -71,7 +71,7 @@ def handle_message(event):
                     uri='https://www.facebook.com/shareteacher/'
                 ),
                 URITemplateAction(
-                    label='我販賣的LINE貼圖',
+                    label='正方形人 LINE貼圖',
                     uri='https://store.line.me/stickershop/product/3002176/zh-Hant'
                 )#,
                 #URITemplateAction(
