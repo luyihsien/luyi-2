@@ -7,7 +7,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage
+    MessageEvent, TextMessage, TextSendMessage, ImageSendMessage,TemplateSendMessage
 )
 
 app = Flask(__name__)
@@ -57,19 +57,19 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="今天的英文影片精選"))
     if msg=="我要學數學":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
-    else: buttons_template = TemplateSendMessage(
-        alt_text='目錄',
+    buttons_template = TemplateSendMessage(
+        alt_text='目錄 template',
         template=ButtonsTemplate(
             title='選擇服務',
             text='請選擇',
-            thumbnail_image_url='https://i.imgur.com/w7jh5f7.png',
+            thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
             actions=[
                 MessageTemplateAction(
-                    label='我要學國文',
-                    text='我要學國文'
+                    label='開始玩',
+                    text='開始玩'
                 ),
                 URITemplateAction(
-                    label='我要學英文',
+                    label='影片介紹 阿肥bot',
                     uri='https://youtu.be/1IxtWgWxtlE'
                 ),
                 URITemplateAction(
@@ -83,7 +83,6 @@ def handle_message(event):
             ]
         )
     )
-    line_bot_api.reply_message(event.reply_token, buttons_template))
-
+    line_bot_api.reply_message(event.reply_token, buttons_template)
 if __name__ == "__main__":
     app.run()
