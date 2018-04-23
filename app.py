@@ -57,33 +57,33 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="今天的英文影片精選"))
     if msg=="我要學數學":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
-    #else: buttons_template = TemplateSendMessage(
-        #alt_text='目錄',
-        #template=ButtonsTemplate(
-            #title='選擇服務',
-            #text='請選擇',
-            #thumbnail_image_url='https://i.imgur.com/w7jh5f7.png',
-            #actions=[
-                #MessageTemplateAction(
-                    #label='我要學國文',
-                    #text='我要學國文'
-                #),
-                #URITemplateAction(
-                    #label='我要學英文',
-                    #uri='https://youtu.be/1IxtWgWxtlE'
-                #),
-                #URITemplateAction(
-                    #label='如何建立自己的 Line Bot',
-                    #uri='https://github.com/twtrubiks/line-bot-tutorial'
-                #),
-                #URITemplateAction(
-                    #label='聯絡作者',
-                    #uri='https://www.facebook.com/TWTRubiks?ref=bookmarks'
-                #)
-            #]
-        #)
-    #)
-    #line_bot_api.reply_message(event.reply_token, buttons_template))
+    else: buttons_template = TemplateSendMessage(
+        alt_text='目錄',
+        template=ButtonsTemplate(
+            title='選擇服務',
+            text='請選擇',
+            thumbnail_image_url='https://i.imgur.com/w7jh5f7.png',
+            actions=[
+                MessageTemplateAction(
+                    label='我要學國文',
+                    text='我要學國文'
+                ),
+                URITemplateAction(
+                    label='我要學英文',
+                    uri='https://youtu.be/1IxtWgWxtlE'
+                ),
+                URITemplateAction(
+                    label='如何建立自己的 Line Bot',
+                    uri='https://github.com/twtrubiks/line-bot-tutorial'
+                ),
+                URITemplateAction(
+                    label='聯絡作者',
+                    uri='https://www.facebook.com/TWTRubiks?ref=bookmarks'
+                )
+            ]
+        )
+    )
+    line_bot_api.reply_message(event.reply_token, buttons_template))
 
 if __name__ == "__main__":
     app.run()
