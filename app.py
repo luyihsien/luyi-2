@@ -60,7 +60,7 @@ def handle_message(event):
         template=ButtonsTemplate(
             title='選擇服務',
             text='請選擇',
-            thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
+            thumbnail_image_url='https://i.imgur.com/w7jh5f7.png',
             actions=[
                 MessageTemplateAction(
                     label='開始學習',
