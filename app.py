@@ -56,28 +56,28 @@ def handle_message(event):
     if msg=="我要學數學":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
     buttons_template = TemplateSendMessage(
-        alt_text='目錄 template',
+        alt_text='目錄 ',
         template=ButtonsTemplate(
             title='選擇服務',
             text='請選擇',
             thumbnail_image_url='https://i.imgur.com/kzi5kKy.jpg',
             actions=[
                 MessageTemplateAction(
-                    label='開始玩',
-                    text='開始玩'
+                    label='開始學習',
+                    text='開始學習'
                 ),
                 URITemplateAction(
-                    label='影片介紹 阿肥bot',
-                    uri='https://youtu.be/1IxtWgWxtlE'
+                    label='關於我-fb粉專連結(不會看到我的個資)',
+                    uri='https://www.facebook.com/shareteacher/'
                 ),
                 URITemplateAction(
-                    label='如何建立自己的 Line Bot',
-                    uri='https://github.com/twtrubiks/line-bot-tutorial'
-                ),
-                URITemplateAction(
-                    label='聯絡作者',
-                    uri='https://www.facebook.com/TWTRubiks?ref=bookmarks'
-                )
+                    label='我販賣的LINE貼圖',
+                    uri='https://store.line.me/stickershop/product/3002176/zh-Hant'
+                )#,
+                #URITemplateAction(
+                    #label='聯絡作者',
+                    #uri='https://www.facebook.com/TWTRubiks?ref=bookmarks'
+                #)
             ]
         )
     )
