@@ -96,7 +96,7 @@ def handle_message(event):
 '''
 
     else:
-        buttons_template = TemplateSendMessage(
+    buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
         template=ButtonsTemplate(
             title='選擇服務',
