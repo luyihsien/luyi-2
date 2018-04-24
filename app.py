@@ -56,18 +56,6 @@ def movie():
         link =  data['href']
         content += '{}\n{}\n'.format(title, link)
     return content
-
-#@handler.add(MessageEvent, message=TextMessage)
-#def handle_message(event):
-    #message = ImageSendMessage(
-        #original_content_url='https://i.imgur.com/3Kiewj2.jpg',
-        #preview_image_url='https://i.imgur.com/3Kiewj2.jpg'
-    #)
-    #line_bot_api.reply_message(event.reply_token, message)
-#def handle_message(event):
-    #line_bot_api.reply_message(
-        #event.reply_token,
-        #TextSendMessage(text=event.message.text+'嗎?'))
 @handler.add(MessageEvent, message=TextMessage)
 
 def handle_message(event):
@@ -166,11 +154,7 @@ def handle_message(event):
                 URITemplateAction(
                     label='正方形人 LINE貼圖',
                     uri='https://store.line.me/stickershop/product/3002176/zh-Hant'
-                )#,
-                #URITemplateAction(
-                    #label='聯絡作者',
-                    #uri='https://www.facebook.com/TWTRubiks?ref=bookmarks'
-                #)
+                ),
             ]
         )
     )
