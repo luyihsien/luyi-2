@@ -34,6 +34,11 @@ def callback():
 
     return 'OK'
 
+def guess_number():
+    num=random.randint(1, 4)
+    return str(num)
+
+
 #@handler.add(MessageEvent, message=TextMessage)
 #def handle_message(event):
     #message = ImageSendMessage(
@@ -87,7 +92,7 @@ def handle_message(event):
             alt_text='開始玩 template',
             template=ButtonsTemplate(
                 title='擲骰子遊戲',
-                text='選擇數字1-4    跟電腦比大小',
+                text='選擇數字1-4    猜電腦的數字是多少',
                 thumbnail_image_url='https://i.imgur.com/lSSWPnX.jpg',
                 actions=[
                     MessageTemplateAction(
@@ -106,12 +111,19 @@ def handle_message(event):
                         label='4',
                         text='4'
                     )
+
                 ]
             )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    #else:
+    if event.message.text ==guess_number():
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜對了  骰子點數是{0}".format(guess_number())))
+    else:
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜了  子點數是{0}".format(guess_number())))
+
+
+    #else:骰
     buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
         template=ButtonsTemplate(
