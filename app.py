@@ -34,7 +34,6 @@ def callback():
 
     return 'OK'
 
-
 #@handler.add(MessageEvent, message=TextMessage)
 #def handle_message(event):
     #message = ImageSendMessage(
@@ -58,6 +57,29 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
     if msg=="9487":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="94狂"))
+    if event.message.text == "開始學習":
+        buttons_template = TemplateSendMessage(
+            alt_text='開始學習',
+            template=ButtonsTemplate(
+                title='學習日記',
+                text='你要學什麼',
+                thumbnail_image_url='https://i.imgur.com/1M5VCS1.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='國文',
+                        text='國文'
+                    ),
+                    MessageTemplateAction(
+                        label='英文',
+                        text='英文'
+                    ),
+                    MessageTemplateAction(
+                        label='數學',
+                        text='數學'
+                    )
+                ]
+            )
+        )
     if event.message.text == "擲骰子遊戲":
         buttons_template = TemplateSendMessage(
             alt_text='開始玩 template',
