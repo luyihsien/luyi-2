@@ -120,12 +120,7 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    if event.message.text == "科技新報":
-        content = technews()
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=content))
-        return 0
+
     if event.message.text == "輕鬆一下":
         buttons_template = TemplateSendMessage(
             alt_text='輕鬆一下',
@@ -139,8 +134,8 @@ def handle_message(event):
                         text='最新電影'
                     ),
                     MessageTemplateAction(
-                        label='新聞',
-                        text='新聞'
+                        label='科技新聞',
+                        text='科技新聞'
                     )
                 ]
             )
@@ -177,6 +172,12 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
     #else:
+    if event.message.text == "科技新聞":
+        content = technews()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
     buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
         template=ButtonsTemplate(
