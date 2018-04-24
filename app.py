@@ -137,7 +137,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='輕鬆一下',
                 text='看個電影或新聞吧',
-                thumbnail_image_url='https://imgur.com/cpjQUeZ',
+                thumbnail_image_url='https://i.imgur.com/cpjQUeZ.png',
                 actions=[
                     MessageTemplateAction(
                         label='最新電影',
