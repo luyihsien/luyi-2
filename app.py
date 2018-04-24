@@ -142,29 +142,29 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    if event.message.text == "擲骰子遊戲":
+    if event.message.text == "瓶中信":
         buttons_template = TemplateSendMessage(
             alt_text='開始玩 template',
             template=ButtonsTemplate(
-                title='擲骰子遊戲',
-                text='選擇數字1-4    猜電腦的數字是多少',
-                thumbnail_image_url='https://i.imgur.com/lSSWPnX.jpg',
+                title='瓶中信',
+                text='選擇瓶子內1-4號信   拆一封信送給你',
+                thumbnail_image_url='https://i.imgur.com/HuP4FiS.jpg',
                 actions=[
                     MessageTemplateAction(
-                        label='1',
-                        text='1'
+                        label='1號信',
+                        text='1號信'
                     ),
                     MessageTemplateAction(
-                        label='2',
-                        text='2'
+                        label='2號信',
+                        text='2號信'
                     ),
                     MessageTemplateAction(
-                        label='3',
-                        text='3'
+                        label='3號信',
+                        text='3號信'
                     ),
                     MessageTemplateAction(
-                        label='4',
-                        text='4'
+                        label='4號信',
+                        text='4號信'
                     )
 
                 ]
