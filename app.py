@@ -116,13 +116,6 @@ def handle_message(event):
             )
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
-    if int(event.message.text) == guess_number():
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜對了  骰子點數是{0}".format(guess_number())))
-        return 0
-    elif type(event.message.text) != str:
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜錯了  骰子點數是{0}".format(guess_number())))
-            return 0
-
     #else:
     buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
