@@ -146,9 +146,9 @@ def handle_message(event):
         buttons_template = TemplateSendMessage(
             alt_text='開始玩 template',
             template=ButtonsTemplate(
-                title='瓶中信',
+                title='瓶中信遊戲',
                 text='選擇瓶子內1-4號信   拆一封信送給你',
-                thumbnail_image_url='https://i.imgur.com/HuP4FiS.jpg',
+                thumbnail_image_url='https://i.imgur.com/lSSWPnX.jpg',
                 actions=[
                     MessageTemplateAction(
                         label='1號信',
@@ -186,8 +186,8 @@ def handle_message(event):
             thumbnail_image_url='https://i.imgur.com/3Kiewj2.jpg',
             actions=[
                 MessageTemplateAction(
-                    label='擲骰子遊戲',
-                    text='擲骰子遊戲'
+                    label='瓶中信遊戲',
+                    text='瓶中信遊戲'
                 ),
                 MessageTemplateAction(
                     label='開始學習',
