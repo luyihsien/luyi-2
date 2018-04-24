@@ -41,25 +41,21 @@ def guess_number():
 
 
 def apple_news():
-    target_url = 'https://tw.appledaily.com/new/realtime'
-    print('Start parsing movie ...')
+    target_url = 'http://www.appledaily.com.tw/realtimenews/section/new/'
+    head = 'http://www.appledaily.com.tw'
+    print('Start parsing appleNews....')
     rs = requests.session()
     res = rs.get(target_url, verify=False)
-    res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')
-    content = []
-    for index, data in enumerate(soup.select('div.item a')):
-        if index == 20:
+    content = ""
+    for index, data in enumerate(soup.select('.rtddt a'), 0):
+        if index == 15:
             return content
-
-        title = data.find('img')['alt']
-        link = data['href']
-        link2 = 'https:' + data.find('img')['data-src']
-        content.append(title)
-        content.append(link)
-        content.append(link2)
-        print("data：")
-        print(content)
+        if head in data['href']:
+            link = data['href']
+        else:
+            link = head + data['href']
+        content += '{}\n\n'.format(link)
     return content
 def movie():
     target_url = 'https://movies.yahoo.com.tw/'
@@ -137,7 +133,7 @@ def handle_message(event):
             template=ButtonsTemplate(
                 title='輕鬆一下',
                 text='看個電影或新聞吧',
-                thumbnail_image_url='https://i.imgur.com/cpjQUeZ.png',
+                thumbnail_image_url='https://imgur.com/cpjQUeZ',
                 actions=[
                     MessageTemplateAction(
                         label='最新電影',
