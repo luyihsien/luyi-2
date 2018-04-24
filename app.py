@@ -58,7 +58,7 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
     if msg=="9487":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="94狂"))
-    if event.message.text == "":
+    if event.message.text == "擲骰子遊戲":
         buttons_template = TemplateSendMessage(
             alt_text='開始玩 template',
             template=ButtonsTemplate(
