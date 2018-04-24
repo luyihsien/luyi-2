@@ -36,7 +36,7 @@ def callback():
 
 def guess_number():
     num=random.randint(1, 4)
-    return str(num)
+    return (num)
 
 
 #@handler.add(MessageEvent, message=TextMessage)
@@ -115,11 +115,11 @@ def handle_message(event):
                 ]
             )
         )
-        line_bot_api.reply_message(event.reply_token, buttons_template)
-        if event.message.text == guess_number():
-            line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜對了  骰子點數是{0}".format(guess_number())))
-            return 0
-        elif event.message.text != guess_number():
+        line_bot_api.reply_message(int(event.reply_token), buttons_template)
+    if int(event.message.text) == guess_number():
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜對了  骰子點數是{0}".format(guess_number())))
+        return 0
+    elif type(event.message.text) != str:
             line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜錯了  骰子點數是{0}".format(guess_number())))
             return 0
 
