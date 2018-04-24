@@ -38,6 +38,29 @@ def callback():
 def guess_number():
     num=random.randint(1, 4)
     return (num)
+
+
+def apple_news():
+    target_url = 'https://tw.appledaily.com/new/realtime'
+    print('Start parsing movie ...')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')
+    content = []
+    for index, data in enumerate(soup.select('div.item a')):
+        if index == 20:
+            return content
+
+        title = data.find('img')['alt']
+        link = data['href']
+        link2 = 'https:' + data.find('img')['data-src']
+        content.append(title)
+        content.append(link)
+        content.append(link2)
+        print("data：")
+        print(content)
+    return content
 def movie():
     target_url = 'https://movies.yahoo.com.tw/'
     print('Start parsing movie ...')
@@ -94,8 +117,35 @@ def handle_message(event):
                         text='數學'
                     ),
                     MessageTemplateAction(
-                        label='輕鬆一下 看電影',
+                        label='輕鬆一下',
+                        text='輕鬆一下'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+        return 0
+    if event.message.text == "蘋果即時新聞":
+        content = apple_news()
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=content))
+        return 0
+    if event.message.text == "輕鬆一下":
+        buttons_template = TemplateSendMessage(
+            alt_text='輕鬆一下',
+            template=ButtonsTemplate(
+                title='輕鬆一下',
+                text='看個電影或新聞吧',
+                thumbnail_image_url='https://imgur.com/cpjQUeZ',
+                actions=[
+                    MessageTemplateAction(
+                        label='最新電影',
                         text='最新電影'
+                    ),
+                    MessageTemplateAction(
+                        label='新聞',
+                        text='新聞'
                     )
                 ]
             )
