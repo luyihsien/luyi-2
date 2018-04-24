@@ -120,7 +120,7 @@ def handle_message(event):
     if event.message.text ==guess_number():
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜對了  骰子點數是{0}".format(guess_number())))
     else:
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜了  子點數是{0}".format(guess_number())))
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜錯了  骰子點數是{0}".format(guess_number())))
 
 
     #else:骰
