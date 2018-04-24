@@ -63,7 +63,7 @@ def handle_message(event):
             alt_text='開始玩 template',
             template=ButtonsTemplate(
                 title='擲骰子遊戲',
-                text='選擇數字1-6    跟電腦比大小',
+                text='選擇數字1-4    跟電腦比大小',
                 thumbnail_image_url='https://i.imgur.com/lSSWPnX.jpg',
                 actions=[
                     MessageTemplateAction(
@@ -81,10 +81,6 @@ def handle_message(event):
                     MessageTemplateAction(
                         label='4',
                         text='4'
-                    ),
-                    MessageTemplateAction(
-                        label='5',
-                        text='5'
                     )
                 ]
             )
