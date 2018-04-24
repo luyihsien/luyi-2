@@ -40,22 +40,21 @@ def guess_number():
     return (num)
 
 
-def apple_news():
-    target_url = 'http://www.appledaily.com.tw/realtimenews/section/new/'
-    head = 'http://www.appledaily.com.tw'
-    print('Start parsing appleNews....')
+def technews():
+    target_url = 'https://technews.tw/'
+    print('Start parsing movie ...')
     rs = requests.session()
     res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
     soup = BeautifulSoup(res.text, 'html.parser')
     content = ""
-    for index, data in enumerate(soup.select('.rtddt a'), 0):
-        if index == 15:
+
+    for index, data in enumerate(soup.select('article div h1.entry-title a')):
+        if index == 12:
             return content
-        if head in data['href']:
-            link = data['href']
-        else:
-            link = head + data['href']
-        content += '{}\n\n'.format(link)
+        title = data.text
+        link = data['href']
+        content += '{}\n{}\n\n'.format(title, link)
     return content
 def movie():
     target_url = 'https://movies.yahoo.com.tw/'
@@ -121,8 +120,8 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    if event.message.text == "新聞":
-        content = apple_news()
+    if event.message.text == "科技新報":
+        content = technews()
         line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=content))
