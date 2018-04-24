@@ -49,11 +49,11 @@ def callback():
 def handle_message(event):
     msg = event.message.text
     print(msg)
-    if msg=="我要學國文":
+    if msg=="國文":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="今天的每日一字"))
-    if msg=="我要學英文":
+    if msg=="英文":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="今天的英文影片精選"))
-    if msg=="我要學數學":
+    if msg=="數學":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
     if msg=="9487":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="94狂"))
