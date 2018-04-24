@@ -81,6 +81,14 @@ def handle_message(event):
                     MessageTemplateAction(
                         label='4',
                         text='4'
+                    ),
+                    MessageTemplateAction(
+                        label='5',
+                        text='5'
+                    ),
+                    MessageTemplateAction(
+                        label='6',
+                        text='6'
                     )
                 ]
             )
