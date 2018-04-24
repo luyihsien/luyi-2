@@ -119,11 +119,11 @@ def handle_message(event):
         return 0
     if event.message.text ==guess_number():
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜對了  骰子點數是{0}".format(guess_number())))
-    else:
+        return 0
+    elif event.message.text !=guess_number():
         line_bot_api.reply_message(event.reply_token, TextSendMessage(text="你猜錯了  骰子點數是{0}".format(guess_number())))
-
-
-    #else:骰
+        return 0
+    #else:
     buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
         template=ButtonsTemplate(
