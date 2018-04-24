@@ -87,8 +87,8 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    else:
-        buttons_template = TemplateSendMessage(
+    #else:
+    buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
         template=ButtonsTemplate(
             title='選擇服務',
