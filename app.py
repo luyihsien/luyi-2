@@ -58,6 +58,35 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
     if msg=="9487":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="94狂"))
+    if event.message.text == "":
+        buttons_template = TemplateSendMessage(
+            alt_text='開始玩 template',
+            template=ButtonsTemplate(
+                title='擲骰子遊戲',
+                text='選擇數字1-6    跟電腦比大小',
+                thumbnail_image_url='https://i.imgur.com/lSSWPnX.jpg',
+                actions=[
+                    MessageTemplateAction(
+                        label='1',
+                        text='1'
+                    ),
+                    MessageTemplateAction(
+                        label='2',
+                        text='2'
+                    ),
+                    MessageTemplateAction(
+                        label='3',
+                        text='3'
+                    ),
+                    MessageTemplateAction(
+                        label='4',
+                        text='4'
+                    )
+                ]
+            )
+        )
+        line_bot_api.reply_message(event.reply_token, buttons_template)
+        return 0
     else:
         buttons_template = TemplateSendMessage(
         alt_text='目錄 ',
