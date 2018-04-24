@@ -125,7 +125,7 @@ def handle_message(event):
         )
         line_bot_api.reply_message(event.reply_token, buttons_template)
         return 0
-    if event.message.text == "蘋果即時新聞":
+    if event.message.text == "新聞":
         content = apple_news()
         line_bot_api.reply_message(
             event.reply_token,
