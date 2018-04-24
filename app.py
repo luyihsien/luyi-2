@@ -1,5 +1,6 @@
+import requests
 import random
-import configparser
+from bs4 import BeautifulSoup
 from flask import Flask, request, abort
 from linebot import (
     LineBotApi, WebhookHandler
@@ -37,7 +38,24 @@ def callback():
 def guess_number():
     num=random.randint(1, 4)
     return (num)
-
+def movie():
+    target_url = 'https://movies.yahoo.com.tw/'
+    print('Start parsing movie ...')
+    rs = requests.session()
+    res = rs.get(target_url, verify=False)
+    res.encoding = 'utf-8'
+    soup = BeautifulSoup(res.text, 'html.parser')
+    content = ""
+    for index, data in enumerate(soup.select('div.movielist_info h1 a')):
+        if index == 20:
+            return content
+        print("data：")
+        print(index)
+        print(data)
+        title = data.text
+        link =  data['href']
+        content += '{}\n{}\n'.format(title, link)
+    return content
 
 #@handler.add(MessageEvent, message=TextMessage)
 #def handle_message(event):
@@ -51,6 +69,7 @@ def guess_number():
         #event.reply_token,
         #TextSendMessage(text=event.message.text+'嗎?'))
 @handler.add(MessageEvent, message=TextMessage)
+
 def handle_message(event):
     msg = event.message.text
     print(msg)
@@ -62,6 +81,10 @@ def handle_message(event):
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="這是今天的數學題目"))
     if msg=="9487":
         line_bot_api.reply_message(event.reply_token,TextSendMessage(text="94狂"))
+    if msg=="最新電影":
+        a = movie()
+        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=a))
+
     if event.message.text == "開始學習":
         buttons_template = TemplateSendMessage(
             alt_text='開始學習',
@@ -81,6 +104,10 @@ def handle_message(event):
                     MessageTemplateAction(
                         label='數學',
                         text='數學'
+                    ),
+                    MessageTemplateAction(
+                        label='輕鬆一下 看電影',
+                        text='最新電影'
                     )
                 ]
             )
